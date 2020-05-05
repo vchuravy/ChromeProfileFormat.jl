@@ -22,23 +22,23 @@ function save_cpuprofile(filename, data, lidict)
 
         JSON.print(f, "startTime")
         print(f, ":")
-        
+
         JSON.print(f, start_time)
 
         print(f, ",")
 
         JSON.print(f, "endTime")
         print(f, ":")
-        JSON.print(f, start_time + length(data) * time_delta)        
+        JSON.print(f, start_time + length(data) * time_delta)
 
         print(f, ",")
 
 
         JSON.print(f, "nodes")
         print(f, ":[")
-        
-        for (i, (k, v)) in ((i, (k, lidict[k])) for (i,k) in enumerate(unique(data)))
-            if i>1
+
+        for (i, (k, v)) in ((i, (k, lidict[k])) for (i, k) in enumerate(unique(data)))
+            if i > 1
                 print(f, ",")
             end
 
@@ -84,7 +84,7 @@ function save_cpuprofile(filename, data, lidict)
             # TODO I think this is wrong, because this probably now refers to a line in the function, not the definition of the function?
             JSON.print(f, "lineNumber")
             print(f, ":")
-            JSON.print(f, v.line>0 ? v.line-1 : 0)
+            JSON.print(f, v.line > 0 ? v.line - 1 : 0)
 
             print(f, ",")
 
